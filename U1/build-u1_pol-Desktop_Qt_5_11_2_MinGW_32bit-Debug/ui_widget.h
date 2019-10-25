@@ -26,6 +26,7 @@ class Ui_Widget
 public:
     QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
+    QSpacerItem *verticalSpacer_3;
     QPushButton *importPolygons;
     QPushButton *pushButton;
     QSpacerItem *verticalSpacer;
@@ -47,15 +48,19 @@ public:
         Widget->setStyleSheet(QStringLiteral(""));
         layoutWidget = new QWidget(Widget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 10, 135, 561));
+        layoutWidget->setGeometry(QRect(10, 10, 131, 561));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer_3);
+
         importPolygons = new QPushButton(layoutWidget);
         importPolygons->setObjectName(QStringLiteral("importPolygons"));
-        importPolygons->setStyleSheet(QStringLiteral("QPushButton#importPolygons { background-color: magenta }"));
+        importPolygons->setStyleSheet(QStringLiteral(""));
 
         verticalLayout->addWidget(importPolygons);
 
@@ -81,7 +86,7 @@ public:
 
         verticalLayout->addWidget(comboBox);
 
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_2 = new QSpacerItem(20, 138, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer_2);
 
@@ -92,7 +97,7 @@ public:
 
         pushButton_2 = new QPushButton(layoutWidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setStyleSheet(QStringLiteral("QPushButton#pushButton_2 { background-color: rgb(64, 224, 208) }"));
+        pushButton_2->setStyleSheet(QStringLiteral(""));
 
         verticalLayout->addWidget(pushButton_2);
 
@@ -107,8 +112,8 @@ public:
 
         Canvas = new Draw(Widget);
         Canvas->setObjectName(QStringLiteral("Canvas"));
-        Canvas->setGeometry(QRect(160, 10, 541, 561));
-        Canvas->setStyleSheet(QStringLiteral("color: rgb(255, 0, 127);"));
+        Canvas->setGeometry(QRect(150, 10, 551, 561));
+        Canvas->setStyleSheet(QStringLiteral(""));
         inandout = new QLabel(Canvas);
         inandout->setObjectName(QStringLiteral("inandout"));
         inandout->setGeometry(QRect(0, 0, 81, 31));

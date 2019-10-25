@@ -21,15 +21,28 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>135</width>
+     <width>131</width>
      <height>561</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
+     <spacer name="verticalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
      <widget class="QPushButton" name="importPolygons">
       <property name="styleSheet">
-       <string notr="true">QPushButton#importPolygons { background-color: magenta }</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Import Polygons</string>
@@ -88,7 +101,7 @@
       <property name="sizeHint" stdset="0">
        <size>
         <width>20</width>
-        <height>40</height>
+        <height>138</height>
        </size>
       </property>
      </spacer>
@@ -103,7 +116,7 @@
     <item>
      <widget class="QPushButton" name="pushButton_2">
       <property name="styleSheet">
-       <string notr="true">QPushButton#pushButton_2 { background-color: rgb(64, 224, 208) }</string>
+       <string notr="true"/>
       </property>
       <property name="text">
        <string>Analyze</string>
@@ -135,14 +148,14 @@
   <widget class="Draw" name="Canvas" native="true">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>150</x>
      <y>10</y>
-     <width>541</width>
+     <width>551</width>
      <height>561</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 0, 127);</string>
+    <string notr="true"/>
    </property>
    <widget class="QLabel" name="inandout">
     <property name="geometry">
