@@ -265,106 +265,56 @@ void Draw::mousePressEvent(QMouseEvent *event)
 
 void Draw::importPoints(std::string &path, std::vector<QPoint3D> &points,  QSizeF &canvas_size, double &z_min, double &z_max)
 {
-    // Inner variables of import - file structure
-    double x;
-    double y;
-    double z;
-    QPoint3D point;
+    double x, y, z;
+        QPoint3D p;
 
-    double x_max = -999.0;
-    double y_max = -999.0;
-    double z_max_ = -999.0;
-    double x_min = 10e6;
-    double y_min = 10e6;
-    double z_min_ = 10e6;
 
-    // Make sure other points are not included
-    if (points.size() != 0)
-    {
-        points.clear();
-    }
+        //go through file and load points into poly_pol (storing all polygons)
+        double min_x = std::numeric_limits<double>::max();
+        double min_y = std::numeric_limits<double>::max();
+        double max_x = std::numeric_limits<double>::min();
+        double max_y = std::numeric_limits<double>::min();
+        double min_z = std::numeric_limits<double>::max();
+        double max_z = std::numeric_limits<double>::min();
 
-    std::ifstream myfile(path);
-    if(myfile.is_open())
-    {
 
-        while(myfile >> x >> y >> z)        // Line by line
+        std::ifstream myfile(path);
+        if(myfile.is_open())
         {
-            point.setX(x);
-            point.setY(y);
-            point.setZ(z);
+            qDebug() << "File is open";
+            while(myfile >> x >> y >> z)        //read file line by line
+            {
+                p.setX(x);
+                p.setY(y);
+                p.setZ(z);
 
-            if (z < z_min || z > z_max)
-            {
-                QMessageBox over;
-                over.setText("The coordinates are above or bellow the the elevation threshold value.");
-            }
+                points.push_back(p);
 
-            if (point.x() > x_max)
-            {
-                x_max = point.x();
-            }
-            if (point.y() > y_max)
-            {
-                y_max = point.y();
-            }
-            if (point.getZ() > z_max_)
-            {
-                z_max_ = point.getZ();
-            }
-            if (point.x() < x_min)
-            {
-                x_min = point.x();
-            }
-            if (point.y() < y_min)
-            {
-                y_min = point.y();
-            }
-            if (point.getZ() < z_min_)
-            {
-                z_min_ = point.getZ();
+                if(x < min_x) min_x = x;
+                if(x > max_x) max_x = x;
+                if(y < min_y) min_y = y;
+                if(y > max_y) max_y = y;
+                if(z < min_z) min_z = z;
+                if(z > max_z) max_z = z;
             }
 
-            points.push_back(point);
+            myfile.close();
         }
 
-        // Print out points
-        for(unsigned int i = 0; i<points.size(); i++)
-        {
-            qDebug() << points[i];
-        }
-        myfile.close();
+        //scale points to canvas size
+            double h = canvas_size.height() - 40;
+            double w = canvas_size.width() - 40;
 
-        // Set the widget size
-        double height = canvas_size.height()-50;
-        double width = canvas_size.width()-50;
+            double x_coef = w/(max_x-min_x);
+            double y_coef = h/(max_y-min_y);
+            double scale_z = z_max / (max_z - min_z);
 
-        // Scale numbers of the coordinates
-        double scale_x = width / (x_max - x_min);
-        double scale_y = height / (y_max - y_min);
-        double scale_z = z_max / (z_max_ - z_min_);
-
-        // Reduction of the coordinates
-        for (int i; i < points.size(); i++)
-        {
-            points[i].setX((points[i].x() - x_min)*scale_x+15);
-            points[i].setY((points[i].y() - y_min)*scale_y+15);
-            points[i].setZ((points[i].getZ() - z_min_)*scale_z);
-
-
-        }
-        qDebug() << points;
-
-        QMessageBox msgBox;
-        msgBox.setText("Import succesfull");
-        msgBox.exec();
-    }
-    else
-    {
-        QMessageBox msgBox;
-        msgBox.setText("Something went wrong! Check the file again");
-        msgBox.exec();
-    }
+            for(unsigned int i = 0; i < points.size(); i++)
+            {
+                points[i].setX((points[i].x()-min_x)*x_coef);
+                points[i].setY((points[i].y()-min_y)*y_coef);
+                points[i].setZ((points[i].getZ() - min_z)*scale_z);
+            }
 }
 
 std::vector<QPoint3D> Draw::generateTerrainHill(QSizeF &canvas_size, double &z_min, double &z_max)
