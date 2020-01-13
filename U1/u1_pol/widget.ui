@@ -19,7 +19,7 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>570</x>
      <y>10</y>
      <width>131</width>
      <height>561</height>
@@ -148,7 +148,7 @@
   <widget class="Draw" name="Canvas" native="true">
    <property name="geometry">
     <rect>
-     <x>150</x>
+     <x>10</x>
      <y>10</y>
      <width>551</width>
      <height>561</height>

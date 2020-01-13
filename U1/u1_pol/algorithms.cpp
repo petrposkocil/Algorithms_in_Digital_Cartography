@@ -57,10 +57,6 @@ int Algorithms::getPositionWinding(QPointF q, QPolygonF pol)
        //Point q outside P
        if (fabs(sum_fi) < eps)
            return 0;
-
-       //something else ???
-       else
-           return -1;
     }
 }
 
