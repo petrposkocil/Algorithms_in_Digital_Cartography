@@ -172,18 +172,16 @@ std::vector<Edge> Algorithms::booleanOperations(std::vector<QPointFB> &polygonA,
     else if(operation == Intersect){
         selectEdges(polygonA, Inner, result);
         selectEdges(polygonB, Inner, result);
-        //Singular edges: always
-        selectEdges(polygonA, On, result);
-        selectEdges(polygonB, On, result);
+
     }
 
     //Difference A - B
     else if(operation == DifferenceAB){
         selectEdges(polygonA, Outer, result);
         selectEdges(polygonB, Inner, result);
+
         //Singular edges: always
         selectEdges(polygonA, On, result);
-        selectEdges(polygonB, On, result);
 
     }
 
@@ -192,8 +190,8 @@ std::vector<Edge> Algorithms::booleanOperations(std::vector<QPointFB> &polygonA,
     {
         selectEdges(polygonA, Inner, result);
         selectEdges(polygonB, Outer, result);
+
         //Singular edges: always
-        selectEdges(polygonA, On, result);
         selectEdges(polygonB, On, result);
 
     }
