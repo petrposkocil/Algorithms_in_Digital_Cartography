@@ -1,0 +1,6 @@
+U3 - GUI for creating and analyzing Digital Terrain Model from 3D points
+
+Development Environment: Qt Creator
+Language: C++
+Geometrical Algorithms:  Delaunay Triangulation
+Functionality: Terrain Contour Lines, Terrain Slope, Topographic Terrain Exposure
