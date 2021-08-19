@@ -1,0 +1,4 @@
+U2 - GUI for creating convex hull around points
+Development Environment: Qt Creator
+Language: C++
+Geometrical Algorithms:  Jarvis Scan, Quick Hull, Sweep Line
