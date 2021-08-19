@@ -1,1 +1,6 @@
-Uloha č. 1 Geometrické vyhledávání bodu
+GUI for finding the geometric position of a point in polygon
+
+Development Environment: Qt Creator
+Language: C++
+Geometrical Algorithms:  Winding Algorithm, Ray Crossing Algorithm
+
