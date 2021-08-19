@@ -1,0 +1,5 @@
+U4 - GUI for Boolean operations on polygons
+
+Development Environment: Qt Creator
+Language: C++
+Geometrical Algorithms:  The intersection of two polygons, Insert an intersection into polygons, Evaluation of polygon vertices against each other, Select edges by position, Build edges for a given operation
